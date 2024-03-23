@@ -3,5 +3,7 @@ export default function RegisterLayout({
   }: Readonly<{
     children: React.ReactNode;
   }>) {
-    return <main>{children}</main>
+    return <main>
+      {children}
+      </main>
   }

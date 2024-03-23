@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import Header from "@/components/ui/header";
 
 const roboto = Roboto({ subsets: ["vietnamese"], weight: ['100', '300', '700'] });
 
@@ -15,10 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={roboto.className}>
-        <header>Header</header>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={roboto.className} suppressHydrationWarning={true}>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header/>
+            {children}
+          </ThemeProvider>
       </body>
     </html>
   );
